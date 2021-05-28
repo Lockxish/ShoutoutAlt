@@ -105,7 +105,7 @@ var app = new Vue({
     if( flags.broadcaster && command === "so" ) {
       console.log("Shouting out " + message)
 
-      app.shoutoutName = message.toLowerCase().Replace("@", "")
+      app.shoutoutName = message
 
       var userSearch = new XMLHttpRequest();
 

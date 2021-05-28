@@ -98,6 +98,9 @@ var app = new Vue({
 
   ComfyJS.onCommand = ( userId, command, message, flags, extra ) => {
 
+      message = message.toLowerCase();
+      message = message.Replace("@", "");
+      
     if( flags.broadcaster && command === "so" ) {
       console.log("Shouting out " + message)
 
@@ -114,7 +117,7 @@ var app = new Vue({
         channels = JSON.parse(userSearch.response).data
 
         for (x in channels) {
-          if(channels[x].display_name == message){
+          if(channels[x].display_name.toLowerCase() == message.toLowerCase()){
             shoutout_id = channels[x].id
             getClips()
           }

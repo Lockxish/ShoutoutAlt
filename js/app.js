@@ -57,7 +57,7 @@ var app = new Vue({
           var channels
           
           userSearch.open("GET", "https://api.twitch.tv/helix/search/channels?query=" + username);
-          userSearch.setRequestHeader('Client-ID', 'cjw2ewijhdkcfvm194n67pvlqvo4rr');
+          userSearch.setRequestHeader('Client-ID', 'txe9if6h2jfb6vz9d6gf76u969uhua');
           userSearch.setRequestHeader('Authorization', 'Bearer ' + access_token);
           userSearch.send();
     
@@ -105,7 +105,7 @@ var app = new Vue({
       var userSearch = new XMLHttpRequest();
 
       userSearch.open("GET", "https://api.twitch.tv/helix/search/channels?query=" + message);
-      userSearch.setRequestHeader('Client-ID', 'cjw2ewijhdkcfvm194n67pvlqvo4rr');
+      userSearch.setRequestHeader('Client-ID', 'txe9if6h2jfb6vz9d6gf76u969uhua');
       userSearch.setRequestHeader('Authorization', 'Bearer ' + access_token);
       userSearch.send();
 
@@ -143,7 +143,7 @@ var app = new Vue({
     console.log(ISODateString(d))
 
     getClips.open("GET", "https://api.twitch.tv/helix/clips?broadcaster_id=" + shoutout_id + "&first=100");
-    getClips.setRequestHeader('Client-ID', 'cjw2ewijhdkcfvm194n67pvlqvo4rr');
+    getClips.setRequestHeader('Client-ID', 'txe9if6h2jfb6vz9d6gf76u969uhua');
     getClips.setRequestHeader('Authorization', 'Bearer ' + access_token);
     getClips.send();
 
@@ -166,7 +166,7 @@ var app = new Vue({
     var getClips = new XMLHttpRequest();
 
     getClips.open("GET", "https://api.twitch.tv/helix/clips?broadcaster_id=" + shoutout_id + "&after=" + page);
-    getClips.setRequestHeader('Client-ID', 'cjw2ewijhdkcfvm194n67pvlqvo4rr');
+    getClips.setRequestHeader('Client-ID', 'txe9if6h2jfb6vz9d6gf76u969uhua');
     getClips.setRequestHeader('Authorization', 'Bearer ' + access_token);
     getClips.send();
 
@@ -225,7 +225,7 @@ function chooseClips(clips, pagination){
     var XML = new XMLHttpRequest();
             
     XML.open("GET", "https://api.twitch.tv/helix/clips?broadcaster_id=" + broadcast_id);
-    XML.setRequestHeader('Client-ID', 'cjw2ewijhdkcfvm194n67pvlqvo4rr');
+    XML.setRequestHeader('Client-ID', 'txe9if6h2jfb6vz9d6gf76u969uhua');
     XML.send();
     XML.onload = function () {
       console.log(XML.response);

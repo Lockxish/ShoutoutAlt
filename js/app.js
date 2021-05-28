@@ -34,6 +34,7 @@ var app = new Vue({
         if(window.location.hash) {
           var parameters = window.location.hash
           parameters = parameters.replace("#", "")
+          parameters = parameters.replace("@", "")
           var splitParams = parameters.split("&")
 
           var username = splitParams[0]
@@ -65,7 +66,7 @@ var app = new Vue({
             channels = JSON.parse(userSearch.response).data
     
             for (x in channels) {
-              if(channels[x].display_name == username){
+              if(channels[x].display_name.toLowerCase() == username.toLowerCase()){
                 broadcast_id = channels[x].id
               }
             }

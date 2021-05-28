@@ -4,6 +4,7 @@ var shoutout_id
 var onlymyclips = false
 var foundClips = false
 var broadcast_name
+var channel
 
 
 var app = new Vue({
@@ -98,17 +99,17 @@ var app = new Vue({
 
   ComfyJS.onCommand = ( userId, command, message, flags, extra ) => {
 
-      message = message.toLowerCase()
-      message = message.Replace("@", "")
+      channel = message.toLowerCase()
+      channel = channel.Replace("@", "")
       
     if( flags.broadcaster && command === "so" ) {
-      console.log("Shouting out " + message)
+      console.log("Shouting out " + channel)
 
-      app.shoutoutName = message
+      app.shoutoutName = channel
 
       var userSearch = new XMLHttpRequest();
 
-      userSearch.open("GET", "https://api.twitch.tv/helix/search/channels?query=" + message);
+      userSearch.open("GET", "https://api.twitch.tv/helix/search/channels?query=" + channel);
       userSearch.setRequestHeader('Client-ID', 'txe9if6h2jfb6vz9d6gf76u969uhua');
       userSearch.setRequestHeader('Authorization', 'Bearer ' + access_token);
       userSearch.send();
@@ -117,7 +118,7 @@ var app = new Vue({
         channels = JSON.parse(userSearch.response).data
 
         for (x in channels) {
-          if(channels[x].display_name.toLowerCase() == message.toLowerCase()){
+          if(channels[x].display_name.toLowerCase() == channel.toLowerCase()){
             shoutout_id = channels[x].id
             getClips()
           }

@@ -81,7 +81,7 @@ var app = new Vue({
         if(this.username == ""){
           alert("Please enter a username!")
         } else {
-          this.generatedLink = "https://kevinkyeh.github.io/twitchShoutOut/#" + this.username
+          this.generatedLink = "https://kevinkyeh.github.io/ShoutoutAlt/#" + this.username
           if(this.onlyme){
             this.generatedLink = this.generatedLink + "&onlyme"
           }

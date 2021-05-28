@@ -101,8 +101,8 @@ var app = new Vue({
 
       message = message.toLowerCase()
       message = message.replace("@", "")
-      
-    if( flags.broadcaster && command === "soclip" ) {
+
+    if( (flags.broadcaster || flags.mod) && (command === "soclip"  || command === "so")) {
       console.log("Shouting out " + message)
 
       app.shoutoutName = message

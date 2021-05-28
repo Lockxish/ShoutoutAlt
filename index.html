@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Twitch Clip Player</title>
+    <script src="https://cdn.jsdelivr.net/npm/comfy.js@latest/dist/comfy.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script
+  src="https://code.jquery.com/jquery-3.5.1.slim.js"
+  integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM="
+  crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+  </head>
+
+  <body>
+
+    <div id="app">
+
+
+      <div v-if="hasArgs && playing">
+        <iframe v-bind:src="clipSource + '&parent=tetraodone.github.io&muted=false&autoplay=true'" allowfullscreen="true" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe>
+        <div class="shoutoutText">{{shoutoutName}}</div>
+      </div>
+      
+      <div v-if="!hasArgs" class="background">
+        <div class="title">
+          Twitch Clip Shoutout
+        </div>
+  
+        <div class="container">
+          <div class="nav">
+            <div v-on:click="selectedPage = 0" class="nav-button" v-bind:class="{ selected: (selectedPage==0) }">
+              About
+            </div>
+            <div v-on:click="selectedPage = 1" class="nav-button" v-bind:class="{ selected: (selectedPage==1) }">
+              Setup
+            </div>
+          </div>
+          <div v-if="selectedPage==0" id="about">
+            Twitch Clip Shoutout can play clips of streamers while you are live.
+            <br /> <br />
+            It works through a webpage loaded into your scene in your streaming application.
+            <br /> <br />
+            It monitors your twitch chat for the command !so and will play a random clip from that streamer.
+
+            <br />
+            <br />
+            <span class="info">Created using <a href="https://github.com/instafluff/ComfyJS">ComfyJS</a> and Twitch API.</span>
+          </div>
+
+          <div v-if="selectedPage==1" id="setup">
+            <label for="uname">Your Twitch Username:</label>
+            <input v-model="username" placeholder="Username" type="text"><br><br>
+  
+            <input type="checkbox" id="checkbox" v-model="onlyme">
+            <label for="onlyme">Only clipped by me</label>
+            <br />
+            <span class="info"><i>Finding clips by you might cause a slight delay</i></span>
+            <br />
+            <br />
+  
+            <button class="button" v-on:click="generateLink">Generate Link</button>
+  
+            <br /> <br />
+            <a v-bind:href="generatedLink">
+              {{generatedLink}}
+            </a>
+            
+            <br />
+            <span class="info" v-if="generatedLink != ''">Copy and paste the above link into a web browser source in your streaming platform. <br /> Once setup you can use '!so {username}' in your chat to shout out users.</span>
+  
+          </div>
+
+        </div>
+        <div class="footer">
+          Made by Tetraodone / Fisfhood
+        </div>
+      </div>
+
+      
+
+    </div>
+    
+
+
+  </body>
+  
+  <script src="./js/app.js"></script>
+
+</html>

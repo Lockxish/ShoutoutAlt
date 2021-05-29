@@ -110,7 +110,7 @@ var app = new Vue({
       setTimeout(stopPlayer, 25000);
 	  
       }
-    }
+    
 
     if( (flags.broadcaster || flags.mod) && (command === "soclip"  || command === "so")) {
       console.log("Shouting out " + message)

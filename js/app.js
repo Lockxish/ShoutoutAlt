@@ -102,7 +102,7 @@ var app = new Vue({
       message = message.toLowerCase()
       message = message.replace("@", "")
 
-	if( (flags.broadcaster || flags.mod) && (command === "playslug" || command === "playclip") {
+	if( (flags.broadcaster || flags.mod) && (command === "playslug" || command === "playclip")) {
       console.log("Playing clip " + message)
 	  
 	  app.clipSource = message

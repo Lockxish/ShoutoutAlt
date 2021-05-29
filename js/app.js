@@ -100,28 +100,31 @@ var app = new Vue({
   ComfyJS.onCommand = ( userId, command, message, flags, extra ) => {
 
       if( (flags.broadcaster || flags.mod) && (command === "playslug" || command === "playclip")) {
-      console.log("Playing clip " + message)
-	  
-      message = message.substring(message.lastIndexOf("/")+1)
-				    
-      var clipPlay = new XMLHttpRequest();
+	      console.log("Playing clip " + message)
 
-      clipPlay.open("GET", "https://api.twitch.tv/helix/clips?id=" + message);
-      clipPlay.setRequestHeader('Client-ID', 'txe9if6h2jfb6vz9d6gf76u969uhua');
-      clipPlay.setRequestHeader('Authorization', 'Bearer ' + access_token);
-      clipPlay.send();
+	      message = message.substring(message.lastIndexOf("/")+1)
 
-      clipPlay.onload = function () {
-	      var clip = JSON.parse(clipPlay.response).data[0].embed_url
-	      var length = JSON.parse(clipPlay.response).data[0].duration * 1000
-	      
-	      app.clipSource = clip
-	      app.playing = true
-	      setTimeout(stopPlayer, Math.min(length, 30000));
+	      var clipPlay = new XMLHttpRequest();
 
+	      clipPlay.open("GET", "https://api.twitch.tv/helix/clips?id=" + message);
+	      clipPlay.setRequestHeader('Client-ID', 'txe9if6h2jfb6vz9d6gf76u969uhua');
+	      clipPlay.setRequestHeader('Authorization', 'Bearer ' + access_token);
+	      clipPlay.send();
+
+	      clipPlay.onload = function () {
+		      var clip = JSON.parse(clipPlay.response).data[0].embed_url
+		      var length = JSON.parse(clipPlay.response).data[0].duration * 1000
+
+		      app.clipSource = clip
+		      app.playing = true
+		      setTimeout(stopPlayer, Math.min(length, 30000));
+
+	      }
       }
 	  
-}
+    if( (flags.broadcaster || flags.mod) && (command === "soreset")) {
+	    stopPlayer();
+    }
     
 
     if( (flags.broadcaster || flags.mod) && (command === "soclip"  || command === "so")) {

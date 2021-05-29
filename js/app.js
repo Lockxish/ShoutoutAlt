@@ -1,3 +1,5 @@
+import Vue from 'vue'
+
 var access_token
 var broadcast_id
 var shoutout_id

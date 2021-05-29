@@ -221,9 +221,11 @@ function chooseClips(clips, pagination){
           console.log("Found a clip!")
         }
       } else {
-        broadcasterClips.push(clips[x].embed_url)
-        foundClips = true
-        console.log("Found a clip!")
+  	  if(clips[x].duration < 31 ){
+		broadcasterClips.push(clips[x].embed_url)
+		foundClips = true
+		console.log("Found a clip!")
+	  }
       }
     }
  

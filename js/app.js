@@ -102,7 +102,7 @@ var app = new Vue({
 	if( (flags.broadcaster || flags.mod) && (command === "playslug" || command === "playclip")) {
       console.log("Playing clip " + message)
 	  
-      console.log(message.substring(message.lastIndexOf("/")))
+      console.log(message.substring(message.lastIndexOf("/")+1))
 				    
       var clipPlay = new XMLHttpRequest();
 

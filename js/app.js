@@ -232,7 +232,7 @@ function chooseClips(clips, pagination){
   
         app.clipSource = broadcasterClips[randomClip]
         app.playing = true
-        setTimeout(stopPlayer, clips[x].duration * 1000);
+        setTimeout(stopPlayer, clips[randomClip].duration * 1000);
       }
 
       if(!foundClips && pagination != null){

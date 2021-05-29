@@ -231,7 +231,7 @@ function chooseClips(clips, pagination){
   
         app.clipSource = broadcasterClips[randomClip]
         app.playing = true
-        setTimeout(stopPlayer, 25000);
+        setTimeout(stopPlayer, clips[x].duration * 1000);
       }
 
       if(!foundClips && pagination != null){

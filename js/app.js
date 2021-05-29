@@ -107,16 +107,17 @@ var app = new Vue({
 	  
       var clipPlay = new XMLHttpRequest();
 
-      clipPlay.open("GET", "https://api.twitch.tv/helix/search/channels?query=" + message);
+      clipPlay.open("GET", "https://api.twitch.tv/helix/clips?id=" + message);
       clipPlay.setRequestHeader('Client-ID', 'txe9if6h2jfb6vz9d6gf76u969uhua');
       clipPlay.setRequestHeader('Authorization', 'Bearer ' + access_token);
       clipPlay.send();
 
       clipPlay.onload = function () {
+	      var clip = JSON.parse(clipPlay.response).data[0].embed_url
 
-      app.clipSource = message
-      app.playing = true
-      setTimeout(stopPlayer, 25000);
+	      app.clipSource = clip
+	      app.playing = true
+	      setTimeout(stopPlayer, 25000);
 
       }
 	  

@@ -115,7 +115,7 @@ var app = new Vue({
 	      
 	      app.clipSource = clip
 	      app.playing = true
-	      setTimeout(stopPlayer, length);
+	      setTimeout(stopPlayer, Math.min(length, 30000));
 
       }
 	  
@@ -221,11 +221,9 @@ function chooseClips(clips, pagination){
           console.log("Found a clip!")
         }
       } else {
-  	  if(clips[x].duration < 31 ){
 		broadcasterClips.push(clips[x].embed_url)
 		foundClips = true
 		console.log("Found a clip!")
-	  }
       }
     }
  
@@ -234,7 +232,7 @@ function chooseClips(clips, pagination){
   
         app.clipSource = broadcasterClips[randomClip]
         app.playing = true
-        setTimeout(stopPlayer, clips[randomClip].duration * 1000);
+        setTimeout(stopPlayer, Math.min(clips[randomClip].duration * 1000, 30000));
       }
 
       if(!foundClips && pagination != null){

@@ -111,10 +111,11 @@ var app = new Vue({
 
       clipPlay.onload = function () {
 	      var clip = JSON.parse(clipPlay.response).data[0].embed_url
-
+	      var length = JSON.parse(clipPlay.response).data[0].duration * 1000
+	      
 	      app.clipSource = clip
 	      app.playing = true
-	      setTimeout(stopPlayer, 25000);
+	      setTimeout(stopPlayer, length);
 
       }
 	  

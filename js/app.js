@@ -102,6 +102,8 @@ var app = new Vue({
 	if( (flags.broadcaster || flags.mod) && (command === "playslug" || command === "playclip")) {
       console.log("Playing clip " + message)
 	  
+      console.log(message.substring(message.lastIndexOf("/")))
+				    
       var clipPlay = new XMLHttpRequest();
 
       clipPlay.open("GET", "https://api.twitch.tv/helix/clips?id=" + message);

@@ -102,6 +102,16 @@ var app = new Vue({
       message = message.toLowerCase()
       message = message.replace("@", "")
 
+	if( (flags.broadcaster || flags.mod) && (command === "playslug" || command === "playclip") {
+      console.log("Playing clip " + message)
+	  
+	  app.clipSource = message
+      app.playing = true
+      setTimeout(stopPlayer, 25000);
+	  
+      }
+    }
+
     if( (flags.broadcaster || flags.mod) && (command === "soclip"  || command === "so")) {
       console.log("Shouting out " + message)
 

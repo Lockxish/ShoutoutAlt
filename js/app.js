@@ -99,9 +99,6 @@ var app = new Vue({
 
   ComfyJS.onCommand = ( userId, command, message, flags, extra ) => {
 
-      message = message.toLowerCase()
-      message = message.replace("@", "")
-
 	if( (flags.broadcaster || flags.mod) && (command === "playslug" || command === "playclip")) {
       console.log("Playing clip " + message)
 	  
@@ -125,6 +122,10 @@ var app = new Vue({
     
 
     if( (flags.broadcaster || flags.mod) && (command === "soclip"  || command === "so")) {
+	    
+      message = message.toLowerCase()
+      message = message.replace("@", 
+				
       console.log("Shouting out " + message)
 
       app.shoutoutName = message

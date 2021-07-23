@@ -217,7 +217,7 @@ var app = new Vue({
 			for (x in channels) {
 			  if(channels[x].display_name.toLowerCase() == message){
 				shoutout_id = channels[x].id
-				if (clipNumber <25) {
+				if (clipNumber <10) {
 					clipNumber = clipNumber + 1;
 					console.log("clips played: " + clipNumber)
 					getClips()
@@ -243,7 +243,7 @@ var app = new Vue({
     d.setDate(d.getDate() - 31);
     console.log(ISODateString(d))
 
-    getClips.open("GET", "https://api.twitch.tv/helix/clips?broadcaster_id=" + shoutout_id );
+    getClips.open("GET", "https://api.twitch.tv/helix/clips?broadcaster_id=" + shoutout_id + "&first=100");
     getClips.setRequestHeader('Client-ID', 'txe9if6h2jfb6vz9d6gf76u969uhua');
     getClips.setRequestHeader('Authorization', 'Bearer ' + access_token);
     getClips.send();
@@ -266,7 +266,7 @@ var app = new Vue({
   async function getMoreClips(page){
     var getClips = new XMLHttpRequest();
 
-    getClips.open("GET", "https://api.twitch.tv/helix/clips?broadcaster_id=" + shoutout_id + "&after=" + page);
+    getClips.open("GET", "https://api.twitch.tv/helix/clips?broadcaster_id=" + shoutout_id + "&after=" + page + "&first=100");
     getClips.setRequestHeader('Client-ID', 'txe9if6h2jfb6vz9d6gf76u969uhua');
     getClips.setRequestHeader('Authorization', 'Bearer ' + access_token);
     getClips.send();

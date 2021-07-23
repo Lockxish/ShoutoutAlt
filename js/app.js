@@ -128,12 +128,14 @@ var app = new Vue({
     }
     
     if( (flags.broadcaster) && (command === "playlistOn")) {
+	        console.log("playlist on")
 		playlistOn = true;
 		playPlaylist();
 	}
 	
 	if( (flags.broadcaster) && (command === "playlistOff")) {
 		playlistOn = false;
+		console.log("playlist off")
 	}
 
     if( (flags.broadcaster || flags.mod) && (command === "soclip"  || command === "so")) {
@@ -180,6 +182,7 @@ var app = new Vue({
 
   function playPlaylist(){
 	  if (playlistOn) {
+		  console.log("running playlist command")
 		  message = "kaeyay"
 
 		  console.log("Shouting out " + message)

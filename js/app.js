@@ -124,18 +124,19 @@ var app = new Vue({
       }
 	  
     if( (flags.broadcaster || flags.mod) && (command === "soreset")) {
+	    console.log("stopping player");
 	    stopPlayer();
     }
     
     if( (flags.broadcaster) && (command === "startPlaylist")) {
-	        console.log("playlist on")
+	        console.log("playlist on");
 		playlistOn = true;
 		playPlaylist();
 	}
 	
 	if( (flags.broadcaster) && (command === "stopPlaylist")) {
 		playlistOn = false;
-		console.log("playlist off")
+		console.log("playlist off");
 	}
 
     if( (flags.broadcaster || flags.mod) && (command === "soclip"  || command === "so")) {

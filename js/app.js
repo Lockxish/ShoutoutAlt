@@ -219,9 +219,11 @@ var app = new Vue({
 				shoutout_id = channels[x].id
 				if (clipNumber <25) {
 					clipNumber = clipNumber + 1;
+					console.log("clips played: " + clipNumber)
 					getClips()
 				} else {
 					clipNumber = clipNumber + 1;
+					console.log("getting MORE clips");
 					getMoreClips(pageID);
 				}
 			  }

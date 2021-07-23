@@ -128,13 +128,13 @@ var app = new Vue({
 	    stopPlayer();
     }
     
-    if( (flags.broadcaster) && (command === "startPlaylist")) {
+    if( (flags.broadcaster) && (command === "startplaylist")) {
 	        console.log("playlist on");
 		playlistOn = true;
 		playPlaylist();
 	}
 	
-	if( (flags.broadcaster) && (command === "stopPlaylist")) {
+	if( (flags.broadcaster) && (command === "stopplaylist")) {
 		playlistOn = false;
 		console.log("playlist off");
 	}

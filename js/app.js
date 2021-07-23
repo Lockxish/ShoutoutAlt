@@ -127,6 +127,7 @@ var app = new Vue({
     if( (flags.broadcaster || flags.mod) && (command === "soreset")) {
 	    console.log("stopping player");
 	    stopPlayer();
+	    playlistOn = false;
     }
     
     if( (flags.broadcaster) && (command === "startplaylist")) {
@@ -290,7 +291,7 @@ function chooseClips(clips, pagination){
         app.playing = true
         setTimeout(stopPlayer, Math.min(clips[randomClip].duration * 1000, 30000));
 	if (playlistOn) { 
-		setTimeout(playPlaylist, Math.min(clips[randomClip].duration * 1000 - 300, 29700));; 
+		setTimeout(playPlaylist, Math.min(clips[randomClip].duration * 1000, 30000));; 
 	}
       }
 

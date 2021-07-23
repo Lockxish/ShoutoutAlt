@@ -221,7 +221,7 @@ var app = new Vue({
 					clipNumber = clipNumber + 1;
 					console.log("clips played: " + clipNumber)
 					getClips()
-				} else if (clipNumber > 2 && clipNumber < 6) {
+				} else if (clipNumber > 2 && clipNumber < 7) {
 					clipNumber = clipNumber + 1;
 					console.log("clips played: " + clipNumber)
 					console.log("getting MORE clips");

@@ -6,6 +6,7 @@ var foundClips = false
 var broadcast_name
 var channel
 var playlistOn = false
+var playlistTarget = "";
 
 
 var app = new Vue({
@@ -100,7 +101,7 @@ var app = new Vue({
 
   ComfyJS.onCommand = ( userId, command, message, flags, extra ) => {
 
-      if( (flags.broadcaster || flags.mod) && (command === "playslug" || command === "playclip")) {
+      if( (flags.broadcaster || flags.mod) && (command === "playslug" || command === "playclip") && (playlistOn === false)) {
 	      console.log("Playing clip " + message)
 
 	      message = message.substring(message.lastIndexOf("/")+1)
@@ -136,10 +137,12 @@ var app = new Vue({
 	
 	if( (flags.broadcaster) && (command === "stopplaylist")) {
 		playlistOn = false;
+		stopPlayer();
+		playlistTarget = "";
 		console.log("playlist off");
 	}
 
-    if( (flags.broadcaster || flags.mod) && (command === "soclip"  || command === "so")) {
+    if( (flags.broadcaster || flags.mod) && (command === "soclip"  || command === "so") && (playlistOn === false)) {
 	    
       message = message.toLowerCase()
       message = message.replace("@", "")
@@ -285,7 +288,7 @@ function chooseClips(clips, pagination){
         app.playing = true
         setTimeout(stopPlayer, Math.min(clips[randomClip].duration * 1000, 30000));
 	if (playlistOn) { 
-		setTimeout(playPlaylist, Math.min(clips[randomClip].duration * 1000, 30000));; 
+		setTimeout(playPlaylist(playlistTarget), Math.min(clips[randomClip].duration * 1000 - 300, 29700));; 
 	}
       }
 

@@ -266,7 +266,9 @@ var app = new Vue({
   function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+    var res = Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+    console.log("random clip select: " + res);
+    return res;
   }
 
   async function getMoreClips(page){
@@ -311,7 +313,6 @@ function chooseClips(clips, pagination){
  
       if(foundClips){
         randomClip = getRandomInt(0, (broadcasterClips.length - 1))
-  
         app.clipSource = broadcasterClips[randomClip]
         app.playing = true
         setTimeout(stopPlayer, Math.min(clips[randomClip].duration * 1000 + 1000, clipLength + 1000));

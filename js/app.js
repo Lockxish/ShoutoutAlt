@@ -7,6 +7,7 @@ var broadcast_name
 var channel
 var playlistOn = false
 var playlistTarget = "";
+var clipLength = 30000;
 
 
 var app = new Vue({
@@ -133,14 +134,15 @@ var app = new Vue({
     if( (flags.broadcaster) && (command === "startplaylist")) {
 	        console.log("playlist on");
 		playlistOn = true;
+	        clipLength = 60000;
 	        playlistTarget = message.toLowerCase()
-                playlistTarget = playlistTarget.replace("@", "")
-				
+                playlistTarget = playlistTarget.replace("@", "")			
 		playPlaylist();
 	}
 	
 	if( (flags.broadcaster) && (command === "stopplaylist")) {
 		playlistOn = false;
+		clipLength = 30000;
 		stopPlayer();
 		playlistTarget = "";
 		console.log("playlist off");

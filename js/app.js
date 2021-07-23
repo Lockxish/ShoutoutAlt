@@ -227,7 +227,7 @@ var app = new Vue({
 					getMoreClips(pageID);
 				} else if (clipNumber === 12) {
 					clipNumber = 3
-					console.log("getting MORE clips");
+					console.log("getting EVEN MORE clips");
 					getMoreClips(pageID);
 				}
 			  }
@@ -288,7 +288,10 @@ function chooseClips(clips, pagination){
     var broadcasterClips = []
 
     var pge = pagination
-    if (clipNumber === 12 || clipNumber === 2) {pageID = pge;}
+    if (clipNumber === 12 || clipNumber === 2) {
+	    pageID = pge;
+	    console.log("new pagination saved");
+    }
 
     for (x in clips){
       if(onlymyclips){

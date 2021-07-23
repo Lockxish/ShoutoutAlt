@@ -221,11 +221,11 @@ var app = new Vue({
 					clipNumber = clipNumber + 1;
 					console.log("clips played: " + clipNumber)
 					getClips()
-				} else if (clipNumber > 2 && clipNumber < 12) {
+				} else if (clipNumber > 2 && clipNumber < 6) {
 					clipNumber = clipNumber + 1;
 					console.log("getting MORE clips");
 					getMoreClips(pageID);
-				} else if (clipNumber === 12) {
+				} else if (clipNumber === 7) {
 					clipNumber = 3
 					console.log("getting EVEN MORE clips");
 					getMoreClips(pageID);
@@ -270,7 +270,7 @@ var app = new Vue({
   async function getMoreClips(page){
     var getClips = new XMLHttpRequest();
 
-    getClips.open("GET", "https://api.twitch.tv/helix/clips?broadcaster_id=" + shoutout_id + "&after=" + page + "&first=20");
+    getClips.open("GET", "https://api.twitch.tv/helix/clips?broadcaster_id=" + shoutout_id + "&after=" + page + "&first=10");
     getClips.setRequestHeader('Client-ID', 'txe9if6h2jfb6vz9d6gf76u969uhua');
     getClips.setRequestHeader('Authorization', 'Bearer ' + access_token);
     getClips.send();
@@ -288,7 +288,7 @@ function chooseClips(clips, pagination){
     var broadcasterClips = []
 
     var pge = pagination
-    if (clipNumber === 12 || clipNumber === 2) {
+    if (clipNumber === 7 || clipNumber === 2) {
 	    pageID = pge;
 	    console.log("new pagination saved");
     }
@@ -312,9 +312,9 @@ function chooseClips(clips, pagination){
   
         app.clipSource = broadcasterClips[randomClip]
         app.playing = true
-        setTimeout(stopPlayer, Math.min(clips[randomClip].duration * 1000, clipLength));
+        setTimeout(stopPlayer, Math.min(clips[randomClip].duration * 1000 + 1000, clipLength + 1000));
 	if (playlistOn) { 
-		setTimeout(playPlaylist, Math.min(clips[randomClip].duration * 1000, clipLength));; 
+		setTimeout(playPlaylist, Math.min(clips[randomClip].duration * 1000 + 1000, clipLength + 1000));; 
 	}
       }
 

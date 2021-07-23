@@ -288,7 +288,7 @@ function chooseClips(clips, pagination){
     var broadcasterClips = []
 
     var pge = pagination
-    ic (clipNumber === 12 || clipNumber === 2) {pageID = pge;}
+    if (clipNumber === 12 || clipNumber === 2) {pageID = pge;}
 
     for (x in clips){
       if(onlymyclips){

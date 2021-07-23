@@ -132,7 +132,10 @@ var app = new Vue({
     if( (flags.broadcaster) && (command === "startplaylist")) {
 	        console.log("playlist on");
 		playlistOn = true;
-		playPlaylist(message);
+	        playlistTarget = message.toLowerCase()
+                playlistTarget = playlistTarget.replace("@", "")
+				
+		playPlaylist();
 	}
 	
 	if( (flags.broadcaster) && (command === "stopplaylist")) {
@@ -184,11 +187,10 @@ var app = new Vue({
 
 
 
-  function playPlaylist(x){
+  function playPlaylist(){
 	  if (playlistOn) {
 		  console.log("running playlist command")
-		  message = x.toLowerCase()
-     		  message = message.replace("@", "")
+		  message = playlistTarget
 
 		  console.log("Shouting out " + message)
 

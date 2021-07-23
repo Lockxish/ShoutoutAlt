@@ -206,7 +206,7 @@ var app = new Vue({
 
 		  var userSearch = new XMLHttpRequest();
 
-		  userSearch.open("GET", "https://api.twitch.tv/helix/search/channels?query=" + message + "&first=100");
+		  userSearch.open("GET", "https://api.twitch.tv/helix/search/channels?query=" + message + "&first=30");
 		  userSearch.setRequestHeader('Client-ID', 'txe9if6h2jfb6vz9d6gf76u969uhua');
 		  userSearch.setRequestHeader('Authorization', 'Bearer ' + access_token);
 		  userSearch.send();
@@ -249,7 +249,7 @@ var app = new Vue({
     d.setDate(d.getDate() - 31);
     console.log(ISODateString(d))
 
-    getClips.open("GET", "https://api.twitch.tv/helix/clips?broadcaster_id=" + shoutout_id + "&first=100");
+    getClips.open("GET", "https://api.twitch.tv/helix/clips?broadcaster_id=" + shoutout_id + "&first=3");
     getClips.setRequestHeader('Client-ID', 'txe9if6h2jfb6vz9d6gf76u969uhua');
     getClips.setRequestHeader('Authorization', 'Bearer ' + access_token);
     getClips.send();

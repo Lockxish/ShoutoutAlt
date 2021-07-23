@@ -231,7 +231,7 @@ var app = new Vue({
 					console.log("clips played: " + clipNumber)
 					console.log("getting EVEN MORE clips");
 					getMoreClips(pageID);*/
-				}
+				//}
 			  }
 			}
         

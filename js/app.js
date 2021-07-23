@@ -184,7 +184,8 @@ var app = new Vue({
   function playPlaylist(){
 	  if (playlistOn) {
 		  console.log("running playlist command")
-		  message = "kaeyay"
+		  message = message.toLowerCase()
+     		  message = message.replace("@", "")
 
 		  console.log("Shouting out " + message)
 

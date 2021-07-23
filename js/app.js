@@ -217,17 +217,17 @@ var app = new Vue({
 			for (x in channels) {
 			  if(channels[x].display_name.toLowerCase() == message){
 				shoutout_id = channels[x].id
-				if (clipNumber < 3) {
+				if (clipNumber < 20) {
 					clipNumber = clipNumber + 1;
 					console.log("clips played: " + clipNumber)
 					getClips()
-				} else if (clipNumber > 2 && clipNumber < 7) {
+				} else if (clipNumber > 19 && clipNumber < 29) {
 					clipNumber = clipNumber + 1;
 					console.log("clips played: " + clipNumber)
 					console.log("getting MORE clips");
 					getMoreClips(pageID);
-				} else if (clipNumber === 7) {
-					clipNumber = 3
+				} else if (clipNumber === 29) {
+					clipNumber = 20
 					console.log("clips played: " + clipNumber)
 					console.log("getting EVEN MORE clips");
 					getMoreClips(pageID);
@@ -249,7 +249,7 @@ var app = new Vue({
     d.setDate(d.getDate() - 31);
     console.log(ISODateString(d))
 
-    getClips.open("GET", "https://api.twitch.tv/helix/clips?broadcaster_id=" + shoutout_id + "&first=20");
+    getClips.open("GET", "https://api.twitch.tv/helix/clips?broadcaster_id=" + shoutout_id + "&first=100");
     getClips.setRequestHeader('Client-ID', 'txe9if6h2jfb6vz9d6gf76u969uhua');
     getClips.setRequestHeader('Authorization', 'Bearer ' + access_token);
     getClips.send();
@@ -272,7 +272,7 @@ var app = new Vue({
   async function getMoreClips(page){
     var getClips = new XMLHttpRequest();
 
-    getClips.open("GET", "https://api.twitch.tv/helix/clips?broadcaster_id=" + shoutout_id + "&after=" + page + "&first=10");
+    getClips.open("GET", "https://api.twitch.tv/helix/clips?broadcaster_id=" + shoutout_id + "&after=" + page + "&first=25");
     getClips.setRequestHeader('Client-ID', 'txe9if6h2jfb6vz9d6gf76u969uhua');
     getClips.setRequestHeader('Authorization', 'Bearer ' + access_token);
     getClips.send();
@@ -290,7 +290,7 @@ function chooseClips(clips, pagination){
     var broadcasterClips = []
 
     var pge = pagination
-    if (clipNumber === 7 || clipNumber === 2) {
+    if (clipNumber === 29 || clipNumber === 19) {
 	    pageID = pge;
 	    console.log("new pagination saved");
     }

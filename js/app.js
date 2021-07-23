@@ -288,7 +288,7 @@ function chooseClips(clips, pagination){
         app.playing = true
         setTimeout(stopPlayer, Math.min(clips[randomClip].duration * 1000, 30000));
 	if (playlistOn) { 
-		setTimeout(playPlaylist(playlistTarget), Math.min(clips[randomClip].duration * 1000 - 300, 29700));; 
+		setTimeout(playPlaylist(playlistTarget), Math.min(clips[randomClip].duration * 1000, 30000));; 
 	}
       }
 

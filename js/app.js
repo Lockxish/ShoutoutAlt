@@ -217,20 +217,20 @@ var app = new Vue({
 			for (x in channels) {
 			  if(channels[x].display_name.toLowerCase() == message){
 				shoutout_id = channels[x].id
-				if (clipNumber < 20) {
+				if (clipNumber < 1) {
 					clipNumber = clipNumber + 1;
 					console.log("clips played: " + clipNumber)
 					getClips()
-				} else if (clipNumber > 19 && clipNumber < 29) {
+				} else if (clipNumber > 0 /*&& clipNumber < 2)*/ {
 					clipNumber = clipNumber + 1;
 					console.log("clips played: " + clipNumber)
 					console.log("getting MORE clips");
 					getMoreClips(pageID);
-				} else if (clipNumber === 29) {
-					clipNumber = 20
+				} /*else if (clipNumber === 2) {
+					clipNumber = 1
 					console.log("clips played: " + clipNumber)
 					console.log("getting EVEN MORE clips");
-					getMoreClips(pageID);
+					getMoreClips(pageID);*/
 				}
 			  }
 			}
@@ -292,10 +292,10 @@ function chooseClips(clips, pagination){
     var broadcasterClips = []
 
     var pge = pagination
-    if (clipNumber === 29 || clipNumber === 19) {
+    /*if (clipNumber === 29 || clipNumber === 19) {*/
 	    pageID = pge;
 	    console.log("new pagination saved");
-    }
+    //}
 
     for (x in clips){
       if(onlymyclips){

@@ -5,6 +5,7 @@ var onlymyclips = false
 var foundClips = false
 var broadcast_name
 var channel
+var playlistOn = false
 
 
 var app = new Vue({
@@ -126,6 +127,14 @@ var app = new Vue({
 	    stopPlayer();
     }
     
+    if( (flags.broadcaster) && (command === "playlistOn")) {
+		playlistOn = true;
+		playPlaylist();
+	}
+	
+	if( (flags.broadcaster) && (command === "playlistOff")) {
+		playlistOn = false;
+	}
 
     if( (flags.broadcaster || flags.mod) && (command === "soclip"  || command === "so")) {
 	    
@@ -166,6 +175,38 @@ var app = new Vue({
            + pad(d.getUTCHours())+':'
            + pad(d.getUTCMinutes())+':'
            + pad(d.getUTCSeconds())+'Z'}
+
+
+
+  function playPlaylist(){
+	  if (playlistOn) {
+		  message = "kaeyay"
+
+		  console.log("Shouting out " + message)
+
+		  app.shoutoutName = message
+
+		  var userSearch = new XMLHttpRequest();
+
+		  userSearch.open("GET", "https://api.twitch.tv/helix/search/channels?query=" + message);
+		  userSearch.setRequestHeader('Client-ID', 'txe9if6h2jfb6vz9d6gf76u969uhua');
+		  userSearch.setRequestHeader('Authorization', 'Bearer ' + access_token);
+		  userSearch.send();
+
+		  userSearch.onload = function () {
+			channels = JSON.parse(userSearch.response).data
+
+			for (x in channels) {
+			  if(channels[x].display_name.toLowerCase() == message){
+				shoutout_id = channels[x].id
+				getClips()
+			  }
+			}
+        
+		}
+	  }
+  }
+ 
 
   function getClips(){
     var getClips = new XMLHttpRequest();
@@ -238,6 +279,7 @@ function chooseClips(clips, pagination){
         app.clipSource = broadcasterClips[randomClip]
         app.playing = true
         setTimeout(stopPlayer, Math.min(clips[randomClip].duration * 1000, 30000));
+		if (playlistOn) { playPlaylist(); }
       }
 
       if(!foundClips && pagination != null){

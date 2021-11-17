@@ -10,7 +10,7 @@ var playlistTarget = "";
 var clipLength = 30000;
 var clipNumber = 0;
 var pageID = "";
-
+var TOTimer;
 
 var app = new Vue({
     el: '#app',
@@ -122,7 +122,8 @@ var app = new Vue({
 
 		      app.clipSource = clip
 		      app.playing = true
-		      setTimeout(stopPlayer, Math.min(length, 30000));
+		      clearTimeout(TOTimer)
+		      TOTimer = setTimeout(stopPlayer, Math.min(length, 30000));
 
 	      }
       }
@@ -315,7 +316,8 @@ function chooseClips(clips, pagination){
         randomClip = getRandomInt(0, (broadcasterClips.length - 1))
         app.clipSource = broadcasterClips[randomClip]
         app.playing = true
-        setTimeout(stopPlayer, Math.min(clips[randomClip].duration * 1000 + 1000, clipLength + 1000));
+	clearTimeout(TOTimer)
+        TOTimer = setTimeout(stopPlayer, Math.min(clips[randomClip].duration * 1000 + 1000, clipLength + 1000));
 	if (playlistOn) { 
 		setTimeout(playPlaylist, Math.min(clips[randomClip].duration * 1000 + 1000, clipLength + 1000));; 
 	}
@@ -331,6 +333,7 @@ function chooseClips(clips, pagination){
     foundClips = false
     shoutout_id = ""
     app.shoutoutName = ""
+    clearTimeout(TOTimer)
   }
 
 

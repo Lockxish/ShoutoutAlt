@@ -122,7 +122,6 @@ var app = new Vue({
 
 		      app.clipSource = clip
 		      app.playing = true
-		      stopPlayer();
 		      clearTimeout(TOTimer)
 		      TOTimer = setTimeout(stopPlayer, Math.min(length, 30000));
 
@@ -317,7 +316,6 @@ function chooseClips(clips, pagination){
         randomClip = getRandomInt(0, (broadcasterClips.length - 1))
         app.clipSource = broadcasterClips[randomClip]
         app.playing = true
-	stopPlayer()      
 	clearTimeout(TOTimer)
         TOTimer = setTimeout(stopPlayer, Math.min(clips[randomClip].duration * 1000 + 1000, clipLength + 1000));
 	if (playlistOn) { 

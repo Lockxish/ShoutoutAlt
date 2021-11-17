@@ -112,7 +112,7 @@ var app = new Vue({
       }
     
 
-    if( (flags.broadcaster || flags.mod) && (command === "soclip"  || command === "so")) {
+    if( (flags.broadcaster || flags.mod) && (command === "soclip"  || (command === "so" && username != "kaeyay"))) {
       console.log("Shouting out " + message)
 
       app.shoutoutName = message

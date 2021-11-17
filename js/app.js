@@ -123,7 +123,7 @@ var app = new Vue({
 		      app.clipSource = clip
 		      app.playing = true
 		      clearTimeout(TOTimer)
-		      TOTimer = setTimeout(stopPlayer, Math.min(length, 30000));
+		      TOTimer = setTimeout(stopPlayer, Math.min(length+1000, 30000));
 
 	      }
       }

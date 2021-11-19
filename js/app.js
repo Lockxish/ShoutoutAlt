@@ -154,12 +154,12 @@ var app = new Vue({
 		console.log("playlist off");
 	}
 
-    if( (flags.broadcaster || flags.mod) && (command === "soclip"  || (command === "so" && username != "kaeyay")) && (playlistOn === false)) {
+    if( (flags.broadcaster || flags.mod) && (command === "soclip"  || (command === "so" && this.username != "kaeyay")) && (playlistOn === false)) {
 	    
       message = message.toLowerCase()
       message = message.replace("@", "")
 				
-      console.log("username: " + username)
+      console.log("username: " + this.username)
       console.log("Shouting out " + message)
 
       app.shoutoutName = message

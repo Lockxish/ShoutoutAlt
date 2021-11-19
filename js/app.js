@@ -159,6 +159,7 @@ var app = new Vue({
       message = message.toLowerCase()
       message = message.replace("@", "")
 				
+      console.log("username: " + username)
       console.log("Shouting out " + message)
 
       app.shoutoutName = message

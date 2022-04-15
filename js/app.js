@@ -123,7 +123,7 @@ var app = new Vue({
 		      app.clipSource = clip
 		      app.playing = true
 		      clearTimeout(TOTimer)
-		      TOTimer = setTimeout(stopPlayer, Math.min(length+1000, 30000));
+		      TOTimer = setTimeout(stopPlayer, Math.min(length+2000, 30000));
 
 	      }
       }
@@ -318,9 +318,9 @@ function chooseClips(clips, pagination){
         app.clipSource = broadcasterClips[randomClip]
         app.playing = true
 	clearTimeout(TOTimer)
-        TOTimer = setTimeout(stopPlayer, Math.min(clips[randomClip].duration * 1000 + 1000, clipLength + 1000));
+        TOTimer = setTimeout(stopPlayer, Math.min(clips[randomClip].duration * 1000 + 2000, clipLength + 2000));
 	if (playlistOn) { 
-		setTimeout(playPlaylist, Math.min(clips[randomClip].duration * 1000 + 1000, clipLength + 1000));; 
+		setTimeout(playPlaylist, Math.min(clips[randomClip].duration * 1000 + 2000, clipLength + 2000));; 
 	}
       }
 

@@ -154,7 +154,7 @@ var app = new Vue({
 		console.log("playlist off");
 	}
 
-    if( (flags.broadcaster || flags.mod) && (command === "soclip"  || (command === "so" && (broadcast_name != "kaeyay" && broadcast_name != "rennslyaer"))) && (playlistOn === false)) {
+    if( (flags.broadcaster || flags.mod) && (command === "soclip"  || (command === "so" && (broadcast_name != "kaeyay" && broadcast_name != "rennslyaer" && broadcast_name != takoronron))) && (playlistOn === false)) {
 	    
       message = message.toLowerCase()
       message = message.replace("@", "")
